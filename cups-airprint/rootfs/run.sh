@@ -8,7 +8,7 @@ done
 
 bashio::log.info "Preparing directories"
 # check if /data/cups exists. If not copy it from /etc/cups
-if [[! -d /data/cups]]; then
+if [! -d "/data/cups"]; then
   cp -v -R /etc/cups /data
 fi
 #link /etc/cups to /data/cups
