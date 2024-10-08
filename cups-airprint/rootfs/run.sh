@@ -7,7 +7,11 @@ until [ -e /var/run/avahi-daemon/socket ]; do
 done
 
 bashio::log.info "Preparing directories"
-cp -v -R /etc/cups /data
+# check if /data/cups exists. If not copy it from /etc/cups
+if [[! -d /data/cups]]; then
+  cp -v -R /etc/cups /data
+fi
+#link /etc/cups to /data/cups
 rm -v -fR /etc/cups
 
 ln -v -s /data/cups /etc/cups
